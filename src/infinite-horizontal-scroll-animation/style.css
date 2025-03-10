@@ -12,7 +12,7 @@
   }
 }
 
-.mask-property {
+/* .mask-property {
   -webkit-mask: linear-gradient(
     90deg,
     transparent,
@@ -21,4 +21,4 @@
     transparent
   );
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-}
+} */
