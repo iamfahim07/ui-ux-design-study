@@ -17,8 +17,9 @@ export default function InfiniteHorizontalScrollAnimation() {
 
       <ScrollAnimationContainer
         className="max-w-[600px]"
-        direction="right"
+        direction="left"
         speed="slow"
+        pauseOnHover
       >
         <li className="px-4 py-3 bg-[var(--clr-primary-400)] rounded shadow-[0_0.5rem_1rem_-0.25rem_var(--clr-primary-900)] list-none">
           HTML
