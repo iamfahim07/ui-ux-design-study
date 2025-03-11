@@ -66,7 +66,7 @@ export const ScrollAnimationContainer = ({
       <div
         ref={scrollerInner}
         className={cn(
-          "py-4 flex justify-stretch items-center gap-[var(--gap)] flex-wrap shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
+          "py-4 flex justify-stretch items-center gap-[var(--gap)] flex-wrap data-[animation=true]:shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
           isAnnouncement &&
             "data-[animation=true]:relative data-[animation=true]:min-w-fit data-[animation=true]:animate-[announcement_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]"
         )}
@@ -77,7 +77,7 @@ export const ScrollAnimationContainer = ({
       <div
         ref={duplicateChildren}
         className={cn(
-          "py-4 hidden data-[animation=true]:flex justify-stretch items-center gap-[var(--gap)] flex-wrap shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
+          "py-4 hidden data-[animation=true]:flex justify-stretch items-center gap-[var(--gap)] flex-wrap data-[animation=true]:shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
           isAnnouncement && "!hidden"
         )}
         aria-hidden="true"
