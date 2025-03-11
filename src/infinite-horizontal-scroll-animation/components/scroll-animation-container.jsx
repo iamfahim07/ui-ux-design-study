@@ -8,6 +8,9 @@ export const ScrollAnimationContainer = ({
   className,
   direction = "left",
   speed = null,
+  pauseOnHover = false,
+  isAnnouncement = false,
+  noMask = false,
   children,
 }) => {
   const scroller = useRef(null);
@@ -53,7 +56,9 @@ export const ScrollAnimationContainer = ({
       data-speed={speed}
       ref={scroller}
       className={cn(
-        "w-full data-[animation=true]:overflow-hidden data-[animation=true]:[-webkit-mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] data-[animation=true]:[mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] data-[direction=right]:[--_animation-direction:reverse] data-[direction=left]:[--_animation-direction:forwards] data-[speed=slow]:[--_animation-duration:60s] data-[speed=fast]:[--_animation-duration:20s]",
+        "w-full flex gap-[var(--gap)] shrink-0 data-[animation=true]:overflow-hidden data-[animation=true]:[-webkit-mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] data-[animation=true]:[mask:linear-gradient(90deg,transparent,white_20%,white_80%,transparent)] data-[direction=right]:[--_animation-direction:reverse] data-[direction=left]:[--_animation-direction:forwards] data-[speed=slow]:[--_animation-duration:60s] data-[speed=fast]:[--_animation-duration:20s]",
+        pauseOnHover && "hover:*:![animation-play-state:paused]",
+        noMask && "![mask:none]",
         className
       )}
     >
@@ -61,19 +66,23 @@ export const ScrollAnimationContainer = ({
       <div
         ref={scrollerInner}
         className={cn(
-          "py-4 flex gap-4 flex-wrap data-[animation=true]:flex-nowrap data-[animation=true]:w-max data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]"
+          "py-4 flex justify-stretch items-center gap-[var(--gap)] flex-wrap shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
+          isAnnouncement &&
+            "data-[animation=true]:relative data-[animation=true]:min-w-fit data-[animation=true]:animate-[announcement_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]"
         )}
       >
         {children}
-        <div
-          ref={duplicateChildren}
-          className={cn(
-            "hidden data-[animation=true]:flex gap-4 flex-nowrap w-max"
-          )}
-          aria-hidden="true"
-        >
-          {children}
-        </div>
+      </div>
+
+      <div
+        ref={duplicateChildren}
+        className={cn(
+          "py-4 hidden data-[animation=true]:flex justify-stretch items-center gap-[var(--gap)] flex-wrap shrink-0 data-[animation=true]:flex-nowrap data-[animation=true]:min-w-full data-[animation=true]:animate-[scroll_var(--_animation-duration,40s)_var(--_animation-direction,forwards)_linear_infinite]",
+          isAnnouncement && "!hidden"
+        )}
+        aria-hidden="true"
+      >
+        {children}
       </div>
     </div>
   );

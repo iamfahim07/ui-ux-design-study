@@ -4,11 +4,22 @@
   --clr-primary-400: hsl(215, 25%, 27%);
   --clr-primary-800: hsl(217, 33%, 17%);
   --clr-primary-900: hsl(218, 33%, 9%);
+  --gap: 16px;
 }
 
 @keyframes scroll {
   to {
-    transform: translate(calc(-50% - 0.5rem));
+    transform: translate(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes announcement {
+  from {
+    left: 100%;
+  }
+  to {
+    transform: translate(-100%);
+    left: -100px;
   }
 }
 
